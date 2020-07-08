@@ -2,8 +2,7 @@ steps:
   - label: "Test and package app on Linux"
     command: ".buildkite/run.sh"
     agents:
-      production: "true"
-      platform: "linux"
+      queue: agent-preview
     timeout_in_minutes: 60
     env:
       DOCKER_IMAGE: "gcr.io/opensourcecoin/radicle-upstream:0.4.0"
