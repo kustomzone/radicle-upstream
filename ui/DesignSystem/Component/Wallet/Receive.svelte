@@ -3,7 +3,7 @@
   import QR from "../QR.svelte";
   import { Text, Title } from "../../Primitive";
 
-  export let accountId = null;
+  export let address = null;
   export let text = null;
 </script>
 
@@ -17,12 +17,12 @@
 </style>
 
 <div class="receive">
-  <QR key={accountId} size="136" />
+  <QR key={address} size="136" />
   {#if text}
     <Text style="padding-top: 1.5rem; color: var(--color-foreground-level-6)">
       {text}
     </Text>
   {/if}
   <Title style="padding: 1.5rem 0 0.5rem 0;">Address</Title>
-  <Urn urn={accountId} />
+  <Urn urn={address} />
 </div>

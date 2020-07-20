@@ -11,7 +11,6 @@ import * as user from "./user";
 // Types
 export interface Org {
   id: string;
-  accountId: string;
   shareableEntityIdentifier: string;
   avatarFallback: avatar.EmojiAvatar;
   members: [user.User];
@@ -172,17 +171,4 @@ export const memberHandleValidationStore = (
       validationMessage: "This user is already a member",
     },
   ]);
-};
-
-export const orgTransactions = (
-  transactions: [transaction.Transaction],
-  id: string
-): [transaction.Transaction] | transaction.Transaction[] => {
-  return transactions.filter(tx => {
-    return tx.messages[0].type ===
-      transaction.MessageType.ProjectRegistration &&
-      tx.messages[0].domainType === project.Domain.Org
-      ? tx.messages[0].domainId == id
-      : null;
-  });
 };
